@@ -13,6 +13,7 @@ const Card = () => {
     const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     timeline
+      .to("body", { visibility: "visible", duration: 0 })
       .from(headerRef.current, {
         y: -50,
         opacity: 0,

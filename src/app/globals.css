@@ -10,3 +10,8 @@
     animation-delay: 0.4s;
   }
 }
+
+body {
+  visibility: hidden;
+  background-color: black;
+}
