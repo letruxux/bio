@@ -12,6 +12,13 @@
 }
 
 body {
+  /* gets shown when gsap inits */
   visibility: hidden;
   background-color: black;
+}
+
+@supports not (height: 100dvh) {
+  .h-dvh {
+    height: 100vh;
+  }
 }
