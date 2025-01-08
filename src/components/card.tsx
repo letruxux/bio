@@ -1,19 +1,55 @@
-import React from "react";
-import Lastfm from "./lastfm";
+"use client";
+import React, { useEffect, useRef } from "react";
 import CustomEmoji from "./emoji";
 import { SiDiscord, SiGithub, SiLastdotfm } from "@icons-pack/react-simple-icons";
+import gsap from "gsap";
 
-const imgUrl = "https://github.com/letruxux.png";
+const Card = () => {
+  const headerRef = useRef(null);
+  const messageRef = useRef(null);
+  const socialRef = useRef(null);
 
-const PhotographerCard = () => {
+  useEffect(() => {
+    const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    timeline
+      .from(headerRef.current, {
+        y: -50,
+        opacity: 0,
+        duration: 0.8,
+      })
+      .from(
+        messageRef.current,
+        {
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+        },
+        "-=0.4"
+      )
+      .from(
+        socialRef.current,
+        {
+          scale: 0.8,
+          opacity: 0,
+          duration: 0.8,
+        },
+        "-=0.4"
+      );
+  }, []);
+
   return (
     <div className="p-6 rounded-lg text-white max-w-[1024px]">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div ref={headerRef} className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-3">
           <div className="relative scale-100 hover:scale-110 transition-transform duration-200">
             <div className="w-12 h-12 bg-gray-600 rounded-full overflow-hidden scale-100">
-              <img src={imgUrl} alt="Profile" className="w-full h-full object-cover" />
+              <img
+                src="https://github.com/letruxux.png"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute -inset-1 border-2 border-dashed border-gray-500 rounded-full animate-[spin_10s_linear_infinite]" />
           </div>
@@ -30,7 +66,7 @@ const PhotographerCard = () => {
       </div>
 
       {/* Message Box */}
-      <div className="mb-6">
+      <div ref={messageRef} className="mb-6">
         <h3 className="text-2xl font-bold mb-4">hello</h3>
         <div className="bg-blue-bg p-4 rounded-2xl">
           <p className="text-sm leading-relaxed">
@@ -44,7 +80,7 @@ const PhotographerCard = () => {
       </div>
 
       {/* Social Links */}
-      <div className="grid grid-cols-4 gap-4">
+      <div ref={socialRef} className="grid grid-cols-4 gap-4">
         <a
           className="bg-blue-bg py-2 rounded-lg hover:bg-blue-hl transition-colors"
           href="https://github.com/letruxux"
@@ -74,11 +110,8 @@ const PhotographerCard = () => {
           ❔
         </a>
       </div>
-
-      {/* Lastfm */}
-      <Lastfm />
     </div>
   );
 };
 
-export default PhotographerCard;
+export default Card;

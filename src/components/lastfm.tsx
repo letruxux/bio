@@ -1,10 +1,11 @@
 "use client";
 
 import { useLastScrobble } from "@/lastfm";
-import { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import gsap from "gsap";
 
 dayjs.extend(relativeTime);
 
@@ -20,6 +21,28 @@ function PlayIcon({ now }: { now: boolean }) {
 
 export default function Lastfm() {
   const { track, error, mutate } = useLastScrobble("letruxux");
+  const lastfmRef = useRef(null);
+  const showEl = track && !error;
+
+  useEffect(() => {
+    if (showEl) {
+      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+      timeline
+        .from(lastfmRef.current, {
+          y: 50, // Increased from 30 to 50 for more movement
+          opacity: 0,
+          duration: 1.2, // Increased from 0.8 to 1.2 for smoother animation
+          scale: 0.95, // Added scale effect
+          rotation: -2, // Added slight rotation
+        })
+        .to(lastfmRef.current, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.5,
+          ease: "elastic.out(1, 0.3)", // Added bounce effect
+        });
+    }
+  }, [showEl]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,12 +52,16 @@ export default function Lastfm() {
     return () => clearInterval(interval);
   }, [mutate]);
 
-  if (!track || error) {
+  if (!showEl) {
     return null;
   }
 
   return (
-    <a className="absolute right-4 bottom-4 flex flex-col items-end" href={track.url}>
+    <a
+      className="absolute right-4 bottom-4 flex flex-col items-end text-white"
+      href={track.url}
+      ref={lastfmRef}
+    >
       <h1 className="flex items-center gap-2 font-bold">
         <PlayIcon now={track.nowPlaying} />{" "}
         {track.nowPlaying ? "Now playing" : `Last played`}{" "}
