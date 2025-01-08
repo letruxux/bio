@@ -71,7 +71,7 @@ export default function Lastfm() {
           </span>
         )}
       </h1>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 scale-100 hover:scale-105 transition-transform duration-500">
         <span>🎵 {track.name}</span>
       </div>
       <div className="flex items-center gap-2">

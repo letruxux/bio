@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        "blue-bg": "rgb(35, 32, 80)",
-        "blue-hl": "rgb(46, 43, 100)",
+        "blue-bg": "rgb(35, 10, 30)",
+        "blue-hl": "rgb(55, 10, 30)",
       },
       keyframes: {
         waveform: {
