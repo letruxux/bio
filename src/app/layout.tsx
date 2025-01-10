@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     url: "https://letruxux.vercel.app",
     siteName: "letruxux",
     type: "website",
+    images: ["https://i.imgur.com/BWwBzsj.png"],
   },
   icons: ["https://letruxux.vercel.app/wawa.png"],
 };
