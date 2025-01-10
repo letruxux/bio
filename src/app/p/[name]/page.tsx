@@ -208,14 +208,16 @@ function App() {
               <ExternalLink className="w-4 h-4" />
               View
             </a>
-            <a
-              className="flex items-center gap-2 bg-surface-light hover:bg-blue-hl px-6 py-3 rounded-lg transition-colors border border-border-subtle action-button"
-              href={data.git}
-              target="_blank"
-            >
-              <Github className="w-4 h-4" />
-              Source Code
-            </a>
+            {data.git && (
+              <a
+                className="flex items-center gap-2 bg-surface-light hover:bg-blue-hl px-6 py-3 rounded-lg transition-colors border border-border-subtle action-button"
+                href={data.git}
+                target="_blank"
+              >
+                <Github className="w-4 h-4" />
+                Source Code
+              </a>
+            )}
           </div>
         </div>
         <a
