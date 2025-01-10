@@ -51,7 +51,7 @@ export default function ProjectsList() {
                 )}
                 <div className="p-6">
                   <div className="w-16 h-16 max-w-16 max-h-16 overflow-hidden bg-accent-primary rounded-xl flex items-center justify-center mb-4">
-                    {project.icon}
+                    <span className="scale-50">{project.icon}</span>
                   </div>
                   <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
                   <p className="text-text-secondary line-clamp-2">
