@@ -2,7 +2,7 @@
 
 import { redirect, useParams } from "next/navigation";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, ArrowLeft } from "lucide-react";
 import { projects } from "@/components/projects";
 import React, { useEffect, useRef } from "react";
 import dayjs from "dayjs";
@@ -144,11 +144,11 @@ function App() {
             >
               Tech Stack
             </h3>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               {data.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 bg-surface-light hover:bg-accent-primary transition-colors rounded-full text-sm border border-border-subtle tech-pill"
+                  className="px-3 py-1 bg-surface-light hover:bg-accent-primary transition-colors rounded-full text-sm border border-border-subtle tech-pill whitespace-nowrap"
                 >
                   {tech}
                 </span>
@@ -206,7 +206,7 @@ function App() {
               className="flex items-center gap-2 bg-accent-primary hover:bg-accent-secondary px-6 py-3 rounded-lg transition-colors action-button"
             >
               <ExternalLink className="w-4 h-4" />
-              View Project
+              View
             </a>
             <a
               className="flex items-center gap-2 bg-surface-light hover:bg-blue-hl px-6 py-3 rounded-lg transition-colors border border-border-subtle action-button"
@@ -218,6 +218,13 @@ function App() {
             </a>
           </div>
         </div>
+        <a
+          className="flex items-center gap-2 bg-transparent bg-surface-light px-6 py-3 rounded-lg transition-colors border border-transparent hover:border-border-subtle action-button mt-4 w-32 h-12"
+          href="/p"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back
+        </a>
       </div>
     </div>
   );

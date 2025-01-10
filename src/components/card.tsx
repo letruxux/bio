@@ -3,11 +3,13 @@ import React, { useEffect, useRef } from "react";
 import CustomEmoji from "./emoji";
 import { SiDiscord, SiGithub, SiLastdotfm } from "@icons-pack/react-simple-icons";
 import gsap from "gsap";
+import { NotebookTabs } from "lucide-react";
 
 const Card = () => {
   const headerRef = useRef(null);
   const messageRef = useRef(null);
   const socialRef = useRef(null);
+  const projectsRef = useRef(null);
 
   useEffect(() => {
     const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -22,7 +24,16 @@ const Card = () => {
       .from(
         messageRef.current,
         {
-          y: 30,
+          y: -10,
+          opacity: 0,
+          duration: 0.8,
+        },
+        "-=0.4"
+      )
+      .from(
+        projectsRef.current,
+        {
+          scale: 0.95, // Mantiene la proporzione vicina a 1 per evitare un effetto troppo visibile
           opacity: 0,
           duration: 0.8,
         },
@@ -31,7 +42,7 @@ const Card = () => {
       .from(
         socialRef.current,
         {
-          scale: 0.8,
+          scale: 0.95, // Mantiene la proporzione vicina a 1 per evitare un effetto troppo visibile
           opacity: 0,
           duration: 0.8,
         },
@@ -63,7 +74,7 @@ const Card = () => {
       </div>
 
       {/* Message Box */}
-      <div ref={messageRef} className="mb-6">
+      <div ref={messageRef} className="mb-4">
         <h3 className="text-2xl font-bold mb-4 text-text-primary">hello</h3>
         <div className="bg-surface-light border border-border-subtle p-4 rounded-2xl">
           <p className="text-sm leading-relaxed">
@@ -74,6 +85,15 @@ const Card = () => {
             />
           </p>
         </div>
+      </div>
+
+      <div ref={projectsRef} className="grid grid-cols-1">
+        <a
+          className="bg-surface-light py-2 rounded-lg hover:bg-accent-primary border border-border-subtle transition w-full block text-center mb-4 font-semibold"
+          href="/p"
+        >
+          <NotebookTabs className="inline size-5" /> My projects
+        </a>
       </div>
 
       {/* Social Links */}
