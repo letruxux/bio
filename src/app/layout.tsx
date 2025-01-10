@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "letruxux",
     type: "website",
   },
-  icons: ["/wawa.png"],
+  icons: ["https://letruxux.vercel.app/wawa.png"],
 };
 
 export default function RootLayout({
