@@ -29,17 +29,17 @@ export default function Lastfm() {
       const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
       timeline
         .from(lastfmRef.current, {
-          y: 50, // Increased from 30 to 50 for more movement
+          y: 50,
           opacity: 0,
-          duration: 1.2, // Increased from 0.8 to 1.2 for smoother animation
-          scale: 0.95, // Added scale effect
-          rotation: -2, // Added slight rotation
+          duration: 1.2,
+          scale: 0.95,
+          rotation: -2,
         })
         .to(lastfmRef.current, {
           scale: 1,
           rotation: 0,
           duration: 0.5,
-          ease: "elastic.out(1, 0.3)", // Added bounce effect
+          ease: "elastic.out(1, 0.3)",
         });
     }
   }, [showEl]);
@@ -47,7 +47,7 @@ export default function Lastfm() {
   useEffect(() => {
     const interval = setInterval(() => {
       mutate();
-    }, 20000); // 60000ms = 1 minute
+    }, 20000);
 
     return () => clearInterval(interval);
   }, [mutate]);
