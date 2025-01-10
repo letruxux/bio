@@ -6,7 +6,7 @@
   .delay-2 {
     animation-delay: 0.2s;
   }
-  .delay-4 {
+  z .delay-4 {
     animation-delay: 0.4s;
   }
 }
@@ -16,9 +16,8 @@ body {
   visibility: hidden;
   background-color: black;
 }
-
-@supports not (height: 100dvh) {
-  .h-dvh {
-    height: 100vh;
-  }
+html,
+body {
+  height: 100%;
+  overflow-y: auto;
 }

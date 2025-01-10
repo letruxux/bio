@@ -57,26 +57,28 @@ export default function Lastfm() {
   }
 
   return (
-    <a
-      className="absolute right-4 bottom-4 flex flex-col items-end text-white"
-      href={track.url}
-      ref={lastfmRef}
-    >
-      <h1 className="flex items-center gap-2 font-bold">
-        <PlayIcon now={track.nowPlaying} />{" "}
-        {track.nowPlaying ? "Now playing" : `Last played`}{" "}
-        {!track.nowPlaying && track.playedAt && (
-          <span className="text-gray-400 text-sm font-semibold">
-            {dayjs(track.playedAt).fromNow()}
-          </span>
-        )}
-      </h1>
-      <div className="flex items-center gap-2 scale-100 hover:scale-105 transition-transform duration-500">
-        <span>🎵 {track.name}</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <span className="text-gray-400">{track.artist}</span>
-      </div>
-    </a>
+    <div className="fixed w-full h-dvh pointer-events-none">
+      <a
+        className="absolute p-2 right-4 bottom-4 flex flex-col items-end text-white pointer-events-auto"
+        href={track.url}
+        ref={lastfmRef}
+      >
+        <h1 className="flex items-center gap-2 font-bold">
+          <PlayIcon now={track.nowPlaying} />{" "}
+          {track.nowPlaying ? "Now playing" : "Last played"}{" "}
+          {!track.nowPlaying && track.playedAt && (
+            <span className="text-gray-400 text-sm font-semibold">
+              {dayjs(track.playedAt).fromNow()}
+            </span>
+          )}
+        </h1>
+        <div className="flex items-center gap-2 scale-100 hover:scale-105 transition-transform duration-500">
+          <span>🎵 {track.name}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-gray-400">{track.artist}</span>
+        </div>
+      </a>
+    </div>
   );
 }
