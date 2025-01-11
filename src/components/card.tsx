@@ -58,7 +58,7 @@ const Card = () => {
           <div className="relative scale-100 hover:scale-110 transition-transform duration-200 group">
             <div className="w-12 h-12 bg-surface-light rounded-full overflow-hidden scale-100">
               <img
-                src="https://github.com/letruxux.png"
+                src="https://github.com/letruxux.png?size=128"
                 alt="Profile"
                 className="w-full h-full object-cover group-hover:animate-[spin_2s_ease-out]"
               />
