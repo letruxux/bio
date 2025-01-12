@@ -59,10 +59,10 @@ export default function Lastfm() {
   return (
     <div className="fixed w-full h-dvh pointer-events-none">
       <a
-  className="absolute p-2 right-4 bottom-4 sm:top-4 sm:bottom-auto flex flex-col items-end text-white pointer-events-auto"
-  href={track.url}
-  ref={lastfmRef}
->
+        className="absolute p-2 right-4 top-4 sm:top-auto sm:bottom-4 flex flex-col items-end text-white pointer-events-auto"
+        href={track.url}
+        ref={lastfmRef}
+      >
         <h1 className="flex items-center gap-2 font-bold">
           <PlayIcon now={track.nowPlaying} />{" "}
           {track.nowPlaying ? "Now playing" : "Last played"}{" "}
