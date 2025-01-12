@@ -1,4 +1,4 @@
-import Card from "@/components/card";
+import Card from "@/components/main-card";
 import Lastfm from "@/components/lastfm";
 
 export default function Home() {
