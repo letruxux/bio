@@ -1,18 +1,19 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import SocialLinks from "./social-links";
 import ProjectsButton from "./projects-button";
 import GifBox from "./gif";
 import Header from "./header";
+import { useGSAP } from "@gsap/react";
 
-const Card = () => {
+export default function MainCard() {
   const headerRef = useRef(null);
   const messageRef = useRef(null);
   const socialRef = useRef(null);
   const projectsRef = useRef(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     timeline
@@ -66,6 +67,4 @@ const Card = () => {
       <SocialLinks ref={socialRef} />
     </div>
   );
-};
-
-export default Card;
+}

@@ -6,6 +6,7 @@ import clsx from "clsx";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 dayjs.extend(relativeTime);
 
@@ -24,7 +25,7 @@ export default function Lastfm() {
   const lastfmRef = useRef(null);
   const showEl = track && !error;
 
-  useEffect(() => {
+  useGSAP(() => {
     if (showEl) {
       const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
       timeline
@@ -76,7 +77,7 @@ export default function Lastfm() {
           <span>🎵 {track.name}</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-gray-400 truncatw">{track.artist}</span>
+          <span className="text-gray-400 truncate">{track.artist}</span>
         </div>
       </a>
     </div>

@@ -2,11 +2,13 @@
 
 import { redirect, useParams } from "next/navigation";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Github, ExternalLink, ArrowLeft } from "lucide-react";
+import { ExternalLink, ArrowLeft } from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 import { projects } from "@/components/projects";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import dayjs from "dayjs";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 dayjs.extend(relativeTime);
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
   const timelineRef = useRef(null);
   const actionsRef = useRef(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     timeline
@@ -214,7 +216,7 @@ function App() {
                 href={data.git}
                 target="_blank"
               >
-                <Github className="w-4 h-4" />
+                <SiGithub className="w-4 h-4 inline-block" />
                 Source Code
               </a>
             )}

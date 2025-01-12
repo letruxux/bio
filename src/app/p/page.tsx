@@ -1,15 +1,16 @@
 "use client";
 
 import { projects } from "@/components/projects";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ArrowLeft } from "lucide-react";
+import { useGSAP } from "@gsap/react";
 
 export default function ProjectsList() {
   const headerRef = useRef(null);
   const projectsRef = useRef(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     timeline

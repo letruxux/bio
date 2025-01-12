@@ -8,7 +8,7 @@ export default function Header({ ref }: { ref: React.RefObject<HTMLDivElement | 
           <div className="w-12 h-12 bg-surface-light rounded-full overflow-hidden scale-100">
             <img
               src="https://github.com/letruxux.png?size=128"
-              alt="Profile"
+              alt="me"
               className="w-full h-full object-cover group-hover:animate-[spin_2s_ease-out]"
             />
           </div>

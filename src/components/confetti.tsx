@@ -1,5 +1,6 @@
 "use client";
 
+/* currently unused but will be used soon */
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 import React, { useEffect } from "react";
