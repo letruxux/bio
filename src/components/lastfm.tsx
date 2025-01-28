@@ -58,7 +58,7 @@ export default function Lastfm() {
   }
 
   return (
-    <div className="fixed w-full h-dvh pointer-events-none">
+    <div className="fixed w-full h-dvh pointer-events-none top-0 left-0 z-50">
       <a
         className="absolute p-2 right-4 top-4 sm:top-auto sm:bottom-4 flex flex-col items-end text-white pointer-events-auto"
         href={track.url}
