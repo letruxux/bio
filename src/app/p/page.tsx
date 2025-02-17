@@ -3,8 +3,11 @@
 import { projects } from "@/components/projects";
 import { useRef } from "react";
 import gsap from "gsap";
-import { AlignCenter, ArrowLeft } from "lucide-react";
+import { AlignCenter, Archive, ArrowLeft, Code2 } from "lucide-react";
 import { useGSAP } from "@gsap/react";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 export default function ProjectsList() {
   const headerRef = useRef(null);
@@ -57,6 +60,8 @@ export default function ProjectsList() {
                   className={`project-card rounded-xl border ${
                     project.wip
                       ? "border-yellow-500/50 hover:border-yellow-500 bg-gradient-to-b from-yellow-500/5 to-blue-bg"
+                      : project.archived
+                      ? "border-border-subtle hover:border-accent-primary bg-gradient-to-t from-yellow-500/5 to-blue-bg"
                       : "border-border-subtle hover:border-accent-primary bg-blue-bg"
                   } transition-colors overflow-hidden`}
                 >
@@ -68,7 +73,12 @@ export default function ProjectsList() {
                   )}
                   {project.wip && (
                     <div className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-sm font-medium absolute top-4 right-4 rounded-full">
-                      In development 🛠️
+                      In development <Code2 className="inline" />
+                    </div>
+                  )}
+                  {project.archived && (
+                    <div className="px-3 py-1 bg-orange-400/20 text-orange-400 text-sm font-medium absolute top-4 right-4 rounded-full">
+                      Archived <Archive className="inline" />
                     </div>
                   )}
                   <div className="p-6">
@@ -79,6 +89,23 @@ export default function ProjectsList() {
                     <p className="text-text-secondary line-clamp-2">
                       {project.description}
                     </p>
+                    <div className="flex justify-between items-center mt-3">
+                      <div className="flex flex-wrap gap-2">
+                        {project.techStack?.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-0.5 text-xs bg-blue-bg border border-border-subtle 
+text-text-secondary rounded-full hover:border-accent-primary 
+transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="text-sm text-text-secondary">
+                        {dayjs(project.time.release).fromNow()}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </a>

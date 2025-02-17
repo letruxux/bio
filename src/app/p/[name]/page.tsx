@@ -2,7 +2,7 @@
 
 import { redirect, useParams } from "next/navigation";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { ExternalLink, ArrowLeft } from "lucide-react";
+import { ExternalLink, ArrowLeft, Archive, Code2 } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { projects } from "@/components/projects";
 import React, { useRef } from "react";
@@ -134,6 +134,8 @@ function App() {
           className={`bg-blue-bg rounded-xl shadow-2xl p-8 pt-20 border ${
             data.wip
               ? "border-yellow-500/50 bg-gradient-to-b from-yellow-500/5 to-blue-bg"
+              : data.archived
+              ? "border-border-subtle bg-gradient-to-b from-orange-500/10 to-blue-bg"
               : "border-border-subtle"
           } mt-[-64px]`}
         >
@@ -143,8 +145,13 @@ function App() {
               <h1 className="text-3xl font-bold text-text-primary">{data.title}</h1>
               {data.wip && (
                 <span className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-sm font-medium rounded-full">
-                  In development 🛠️
+                  In development <Code2 className="inline" />
                 </span>
+              )}
+              {data.archived && (
+                <div className="px-3 py-1 bg-orange-400/20 text-orange-400 text-sm font-medium  rounded-full">
+                  Archived <Archive className="inline" />
+                </div>
               )}
             </div>
             <p className="text-text-secondary mb-6 text-lg">{data.description}</p>

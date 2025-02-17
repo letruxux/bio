@@ -13,6 +13,7 @@ interface Project {
     release: Date;
   };
   wip?: boolean;
+  archived?: boolean;
 }
 
 export const projects: { [key: string]: Project } = {
@@ -24,7 +25,7 @@ export const projects: { [key: string]: Project } = {
         The easiest way to generate <code>winget</code> commands.
       </span>
     ),
-    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "DaisyUI", "zod"],
+    techStack: ["TypeScript", "Next.js", "React", "Tailwind CSS", "DaisyUI", "zod"],
     icon: <span className="rotate-12 text-7xl">☆</span>,
     url: "https://asdfgh-apps.vercel.app",
     git: "https://github.com/letruxux/asdfgh",
@@ -58,7 +59,7 @@ export const projects: { [key: string]: Project } = {
     bannerImage: "",
     title: "Translate Bot",
     description: <span>The simplest bot to translate messages in Discord.</span>,
-    techStack: ["Typescript", "Bun", "discord.js"],
+    techStack: ["TypeScript", "Bun", "discord.js"],
     icon: <span className="text-7xl -rotate-2">🗣️</span>,
     git: "https://github.com/letruxux/translate-bot-djs",
     time: {
@@ -75,10 +76,11 @@ export const projects: { [key: string]: Project } = {
         <small className="mt-1 text-gray-400 block">My first ever React.js website</small>
       </span>
     ),
-    techStack: ["Next.js", "SCSS", "TypeScript", "React", "ZIP Archive Manipulation"],
+    techStack: ["TypeScript", "Next.js", "SCSS", "React", "ZIP Archive Manipulation"],
     icon: <span className="text-7xl -rotate-2">💿</span>,
     url: "https://mcdisc.vercel.app",
     /* git: "https://github.com/letruxux/mcdisc", */
+    archived: true, // Added archived flag
     time: {
       start: new Date("2024-06-21"),
       release: new Date("2024-06-28"),
@@ -98,6 +100,7 @@ export const projects: { [key: string]: Project } = {
     techStack: ["Python", "discord.py", "yt-dlp", "ffmpeg"],
     icon: <span className="text-7xl -rotate-2">🎶</span>,
     git: "https://github.com/letruxux/sassobot",
+    archived: true, // Added archived flag
     time: {
       start: new Date("2023-06-24"),
       release: new Date("2023-07-21"),
