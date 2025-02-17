@@ -53,12 +53,23 @@ export default function ProjectsList() {
             })
             .map(([key, project]) => (
               <a href={`/p/${key}`} key={key}>
-                <div className="project-card bg-blue-bg rounded-xl border border-border-subtle hover:border-accent-primary transition-colors overflow-hidden">
+                <div
+                  className={`project-card rounded-xl border ${
+                    project.wip
+                      ? "border-yellow-500/50 hover:border-yellow-500 bg-gradient-to-b from-yellow-500/5 to-blue-bg"
+                      : "border-border-subtle hover:border-accent-primary bg-blue-bg"
+                  } transition-colors overflow-hidden`}
+                >
                   {project.bannerImage && (
                     <div
                       className="h-48 w-full bg-cover bg-center"
                       style={{ backgroundImage: `url("${project.bannerImage}")` }}
                     />
+                  )}
+                  {project.wip && (
+                    <div className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-sm font-medium absolute top-4 right-4 rounded-full">
+                      In development 🛠️
+                    </div>
                   )}
                   <div className="p-6">
                     <div className="w-16 h-16 max-w-16 max-h-16 overflow-hidden bg-accent-primary rounded-xl flex items-center justify-center mb-4">

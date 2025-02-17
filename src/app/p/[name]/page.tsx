@@ -130,11 +130,23 @@ function App() {
           {data.icon}
         </div>
 
-        <div className="bg-blue-bg rounded-xl shadow-2xl p-8 pt-20 border border-border-subtle mt-[-64px]">
+        <div
+          className={`bg-blue-bg rounded-xl shadow-2xl p-8 pt-20 border ${
+            data.wip
+              ? "border-yellow-500/50 bg-gradient-to-b from-yellow-500/5 to-blue-bg"
+              : "border-border-subtle"
+          } mt-[-64px]`}
+        >
           {/* Project Info */}
           <div ref={contentRef}>
-            <h1 className="text-3xl font-bold mb-3 text-text-primary">{data.title}</h1>
-
+            <div className="flex items-center gap-4 mb-3">
+              <h1 className="text-3xl font-bold text-text-primary">{data.title}</h1>
+              {data.wip && (
+                <span className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-sm font-medium rounded-full">
+                  In development 🛠️
+                </span>
+              )}
+            </div>
             <p className="text-text-secondary mb-6 text-lg">{data.description}</p>
           </div>
 
