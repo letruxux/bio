@@ -8,10 +8,10 @@ const font = Onest({
 });
 
 export const metadata: Metadata = {
-  title: "me",
+  title: "letru",
   description: "thats me",
   openGraph: {
-    title: "me",
+    title: "letru",
     description: "thats me",
     url: "https://letruxux.vercel.app",
     siteName: "letruxux",

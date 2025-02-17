@@ -108,10 +108,11 @@ export const projects: { [key: string]: Project } = {
   "sanremo-plugin": {
     wip: true,
     bannerImage: "",
-    title: "Music Festival (Sanremo) Plugin",
+    title: "Televoting Plugin",
     description: (
       <span>
-        A voting system for a recreation of the italian music festival Sanremo.
+        A voting system for a Minecraft recreation of the Italian music festival{" "}
+        <i>Sanremo</i>.
         <small className="mt-1 text-gray-400 block">
           Features sounds, voting GUI, bossbar, timer and votes book.
         </small>
