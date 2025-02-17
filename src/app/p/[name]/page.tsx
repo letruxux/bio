@@ -186,7 +186,7 @@ function App() {
                   <div className="absolute left-[calc(50%-8px)] top-[24px] w-4 h-4 rounded-full bg-accent-primary border-4 border-black z-[-1]"></div>
                   <span className="text-text-secondary block text-center">
                     <h4 className="text-xs uppercase tracking-wider text-text-secondary mb-1">
-                      Initial Release
+                      {data.wip ? "Planned" : "Initial"} Release
                     </h4>
                     <time className="text-text-primary block">
                       {dayjs(data.time.release).format("MMM DD, YYYY")}{" "}
@@ -202,14 +202,16 @@ function App() {
 
           {/* Action Buttons */}
           <div ref={actionsRef} className="flex gap-4">
-            <a
-              href={data.url}
-              target="_blank"
-              className="flex items-center gap-2 bg-accent-primary hover:bg-accent-secondary px-6 py-3 rounded-lg transition-colors action-button"
-            >
-              <ExternalLink className="w-4 h-4" />
-              View
-            </a>
+            {data.url && (
+              <a
+                href={data.url}
+                target="_blank"
+                className="flex items-center gap-2 bg-accent-primary hover:bg-accent-secondary px-6 py-3 rounded-lg transition-colors action-button"
+              >
+                <ExternalLink className="w-4 h-4" />
+                View
+              </a>
+            )}
             {data.git && (
               <a
                 className="flex items-center gap-2 bg-surface-light hover:bg-blue-hl px-6 py-3 rounded-lg transition-colors border border-border-subtle action-button"
