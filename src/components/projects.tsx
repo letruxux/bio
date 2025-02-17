@@ -105,7 +105,7 @@ export const projects: { [key: string]: Project } = {
     },
   },
 
-  sanremo_plugin: {
+  "sanremo-plugin": {
     wip: true,
     bannerImage: "",
     title: "Music Festival (Sanremo) Plugin",
