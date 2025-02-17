@@ -11,7 +11,7 @@ export default function WipBadge({ inline = false }: WipBadgeProps) {
 
   return (
     <span className={`${baseClasses} ${!inline ? positionClasses : ""}`}>
-      In development <Code2 className="inline" />
+      W.I.P. <Code2 className="inline" />
     </span>
   );
 }
