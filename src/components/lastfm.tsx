@@ -1,6 +1,6 @@
 "use client";
 
-import { useLastScrobble } from "@/lastfm";
+import { useLastScrobble } from "@/lib/lastfm";
 import React, { useEffect, useRef } from "react";
 import clsx from "clsx";
 import dayjs from "dayjs";

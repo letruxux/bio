@@ -1,15 +1,15 @@
 "use client";
 
 import { redirect, useParams } from "next/navigation";
-import relativeTime from "dayjs/plugin/relativeTime";
 import { ExternalLink, ArrowLeft, Archive, Code2 } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { projects } from "@/components/projects";
 import React, { useRef } from "react";
-import dayjs from "dayjs";
+import dayjs from "@/lib/dayjs";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-dayjs.extend(relativeTime);
+import ArchivedBadge from "@/components/badges/archived";
+import WipBadge from "@/components/badges/wip";
 
 function App() {
   const { name: projectName } = useParams<{ name: string }>();
@@ -143,16 +143,8 @@ function App() {
           <div ref={contentRef}>
             <div className="flex items-center gap-4 mb-3">
               <h1 className="text-3xl font-bold text-text-primary">{data.title}</h1>
-              {data.wip && (
-                <span className="px-3 py-1 bg-yellow-500/20 text-yellow-500 text-sm font-medium rounded-full">
-                  In development <Code2 className="inline" />
-                </span>
-              )}
-              {data.archived && (
-                <div className="px-3 py-1 bg-orange-400/20 text-orange-400 text-sm font-medium  rounded-full">
-                  Archived <Archive className="inline" />
-                </div>
-              )}
+              {data.wip && <WipBadge inline />}
+              {data.archived && <ArchivedBadge inline />}
             </div>
             <p className="text-text-secondary mb-6 text-lg">{data.description}</p>
           </div>
