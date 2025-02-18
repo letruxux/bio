@@ -57,7 +57,7 @@ export default function ProjectCard({
               />
             </div>
             <div className="text-sm text-text-secondary shrink-0">
-              {dayjs(project.time.release).fromNow()}
+              {dayjs(project.timeline.at(0)!.date).fromNow()}
             </div>
           </div>
         </div>

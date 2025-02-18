@@ -8,10 +8,7 @@ interface Project {
   icon: JSX.Element | string;
   url?: string;
   git?: string;
-  time: {
-    start: Date;
-    release: Date;
-  };
+  timeline: { label: string; date: Date }[];
   wip?: boolean;
   archived?: boolean;
 }
@@ -29,10 +26,10 @@ export const projects: { [key: string]: Project } = {
     icon: <span className="rotate-12 text-7xl">☆</span>,
     url: "https://asdfgh-apps.vercel.app",
     git: "https://github.com/letruxux/asdfgh",
-    time: {
-      start: new Date("2024-11-30"),
-      release: new Date("2024-12-01"),
-    },
+    timeline: [
+      { label: "PROJECT START", date: new Date("2024-11-30") },
+      { label: "INITIAL RELEASE", date: new Date("2024-12-01") },
+    ],
   },
   "tou-install": {
     bannerImage: "",
@@ -50,10 +47,10 @@ export const projects: { [key: string]: Project } = {
     icon: <span className="text-7xl">✌</span>,
     url: "https://github.com/letruxux/tou-crewlink-install/releases/latest",
     git: "https://github.com/letruxux/tou-crewlink-install",
-    time: {
-      start: new Date("2025-01-01"),
-      release: new Date("2025-01-03"),
-    },
+    timeline: [
+      { label: "PROJECT START", date: new Date("2025-01-01") },
+      { label: "INITIAL RELEASE", date: new Date("2025-01-03") },
+    ],
   },
   "translate-bot-djs": {
     bannerImage: "",
@@ -62,10 +59,10 @@ export const projects: { [key: string]: Project } = {
     techStack: ["TypeScript", "Bun", "discord.js"],
     icon: <span className="text-7xl -rotate-2">🗣️</span>,
     git: "https://github.com/letruxux/translate-bot-djs",
-    time: {
-      start: new Date("2024-11-24"),
-      release: new Date("2024-11-24"),
-    },
+    timeline: [
+      { label: "PROJECT START", date: new Date("2024-11-24") },
+      { label: "INITIAL RELEASE", date: new Date("2024-11-24") },
+    ],
   },
   mcdisc: {
     bannerImage: "",
@@ -79,12 +76,11 @@ export const projects: { [key: string]: Project } = {
     techStack: ["TypeScript", "Next.js", "SCSS", "React", "ZIP Archive Manipulation"],
     icon: <span className="text-7xl -rotate-2">💿</span>,
     url: "https://mcdisc.vercel.app",
-    /* git: "https://github.com/letruxux/mcdisc", */
-    archived: true, // Added archived flag
-    time: {
-      start: new Date("2024-06-21"),
-      release: new Date("2024-06-28"),
-    },
+    timeline: [
+      { label: "PROJECT START", date: new Date("2024-06-21") },
+      { label: "INITIAL RELEASE", date: new Date("2024-06-28") },
+    ],
+    archived: true,
   },
   sassobot: {
     bannerImage: "",
@@ -100,14 +96,12 @@ export const projects: { [key: string]: Project } = {
     techStack: ["Python", "discord.py", "yt-dlp", "ffmpeg"],
     icon: <span className="text-7xl -rotate-2">🎶</span>,
     git: "https://github.com/letruxux/sassobot",
-    archived: true, // Added archived flag
-    time: {
-      start: new Date("2023-06-24"),
-      release: new Date("2023-07-21"),
-      /*  last_update: new Date("2023-07-08"), */
-    },
+    timeline: [
+      { label: "PROJECT START", date: new Date("2023-06-24") },
+      { label: "INITIAL RELEASE", date: new Date("2023-07-21") },
+    ],
+    archived: true,
   },
-
   "sanremo-plugin": {
     wip: true,
     bannerImage: "",
@@ -123,12 +117,9 @@ export const projects: { [key: string]: Project } = {
     ),
     techStack: ["Java", "Gradle", "Bukkit", "LuckPerms", "PlaceholderAPI"],
     icon: <span className="text-7xl -rotate-2">🎶</span>,
-    /* url: "", */
-    /* git: "https://github.com/letruxux/sassobot", */
-    time: {
-      start: new Date("2025-02-14"),
-      release: new Date("2025-02-22"),
-      /*  last_update: new Date("2023-07-08"), */
-    },
+    timeline: [
+      { label: "PROJECT START", date: new Date("2025-02-14") },
+      { label: "INITIAL RELEASE", date: new Date("2025-02-22") },
+    ],
   },
 };

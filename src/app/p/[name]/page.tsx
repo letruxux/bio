@@ -181,35 +181,22 @@ function App() {
               <div className="absolute top-[28px] left-0 w-full h-[2px] bg-accent-primary timeline-line"></div>
 
               <div className="flex justify-between items-start gap-16">
-                <div className="relative">
-                  <div className="absolute left-[calc(50%-8px)] top-[24px] w-4 h-4 rounded-full bg-accent-primary border-4 border-black z-[-1]"></div>
-                  <span className="text-text-secondary block text-center">
-                    <h4 className="text-xs uppercase tracking-wider text-text-secondary mb-1">
-                      Project Start
-                    </h4>
-                    <time className="text-text-primary block">
-                      {dayjs(data.time.start).format("MMM DD, YYYY")}{" "}
-                      <small className="block mt-1">
-                        ({dayjs(data.time.start).fromNow()})
-                      </small>
-                    </time>
-                  </span>
-                </div>
-
-                <div className="relative">
-                  <div className="absolute left-[calc(50%-8px)] top-[24px] w-4 h-4 rounded-full bg-accent-primary border-4 border-black z-[-1]"></div>
-                  <span className="text-text-secondary block text-center">
-                    <h4 className="text-xs uppercase tracking-wider text-text-secondary mb-1">
-                      {data.wip ? "Planned" : "Initial"} Release
-                    </h4>
-                    <time className="text-text-primary block">
-                      {dayjs(data.time.release).format("MMM DD, YYYY")}{" "}
-                      <small className="block mt-1">
-                        ({dayjs(data.time.release).fromNow()})
-                      </small>
-                    </time>
-                  </span>
-                </div>
+                {data.timeline.map((event, index) => (
+                  <div key={index} className="relative">
+                    <div className="absolute left-[calc(50%-8px)] top-[24px] w-4 h-4 rounded-full bg-accent-primary border-4 border-black z-[-1]"></div>
+                    <span className="text-text-secondary block text-center">
+                      <h4 className="text-xs uppercase tracking-wider text-text-secondary mb-1">
+                        {event.label}
+                      </h4>
+                      <time className="text-text-primary block">
+                        {dayjs(event.date).format("MMM DD, YYYY")}{" "}
+                        <small className="block mt-1">
+                          ({dayjs(event.date).fromNow()})
+                        </small>
+                      </time>
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

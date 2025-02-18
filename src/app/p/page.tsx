@@ -47,8 +47,8 @@ export default function ProjectsList() {
         <div ref={projectsRef} className="flex flex-col gap-6">
           {Object.entries(projects)
             .sort(([_, a], [__, b]) => {
-              const startTimeA = a.time.start;
-              const startTimeB = b.time.start;
+              const startTimeA = a.timeline.at(0)!.date;
+              const startTimeB = b.timeline.at(0)!.date;
 
               return startTimeB.getTime() - startTimeA.getTime();
             })
