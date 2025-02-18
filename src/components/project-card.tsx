@@ -1,5 +1,4 @@
 import dayjs from "@/lib/dayjs";
-import { Code2, Archive } from "lucide-react";
 import { projects } from "./projects";
 import ArchivedBadge from "./badges/archived";
 import WipBadge from "./badges/wip";

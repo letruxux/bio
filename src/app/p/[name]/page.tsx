@@ -1,10 +1,10 @@
 "use client";
 
 import { redirect, useParams } from "next/navigation";
-import { ExternalLink, ArrowLeft, Archive, Code2 } from "lucide-react";
+import { ExternalLink, ArrowLeft } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { projects } from "@/components/projects";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import dayjs from "@/lib/dayjs";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
