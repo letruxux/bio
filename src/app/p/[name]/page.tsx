@@ -141,11 +141,14 @@ function App() {
         >
           {/* Project Info */}
           <div ref={contentRef}>
-            <div className="flex items-center gap-4 mb-3">
+            <div className="flex flex-nowrap items-center gap-4 mb-1">
               <h1 className="text-3xl font-bold text-text-primary">{data.title}</h1>
-              {data.wip && <WipBadge inline />}
-              {data.archived && <ArchivedBadge inline />}
+              <div className="flex-shrink-0">
+                {data.wip && <WipBadge inline />}
+                {data.archived && <ArchivedBadge inline />}
+              </div>
             </div>
+
             <p className="text-text-secondary mb-6 text-lg">{data.description}</p>
           </div>
 
