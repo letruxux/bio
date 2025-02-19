@@ -119,7 +119,7 @@ export const projects: { [key: string]: Project } = {
     icon: <span className="text-7xl -rotate-2">🎶</span>,
     timeline: [
       { label: "PROJECT START", date: new Date("2025-02-14") },
-      { label: "INITIAL RELEASE", date: new Date("2025-02-22") },
+      { label: "PLANNED RELEASE", date: new Date("2025-02-22") },
     ],
   },
 };
