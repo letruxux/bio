@@ -103,7 +103,6 @@ export const projects: { [key: string]: Project } = {
     archived: true,
   },
   "sanremo-plugin": {
-    wip: true,
     bannerImage: "",
     title: "Televoting Plugin",
     description: (
