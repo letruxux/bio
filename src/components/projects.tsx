@@ -78,7 +78,8 @@ export const projects: { [key: string]: Project } = {
     url: "https://mcdisc.vercel.app",
     timeline: [
       { label: "PROJECT START", date: new Date("2024-06-21") },
-      { label: "INITIAL RELEASE", date: new Date("2024-06-28") },
+      { label: "INITIAL RELEASE", date: new Date("2024-06-23") },
+      { label: "LAST UPDATE", date: new Date("2024-06-28") },
     ],
     archived: true,
   },
@@ -99,6 +100,7 @@ export const projects: { [key: string]: Project } = {
     timeline: [
       { label: "PROJECT START", date: new Date("2023-06-24") },
       { label: "INITIAL RELEASE", date: new Date("2023-07-21") },
+      { label: "LAST UPDATE", date: new Date("2024-08-22") },
     ],
     archived: true,
   },

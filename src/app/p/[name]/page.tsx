@@ -178,7 +178,7 @@ function App() {
               Development Timeline
             </h3>
             <div className="relative">
-              <div className="absolute top-[28px] left-0 w-full h-[2px] bg-accent-primary timeline-line"></div>
+              <div className="absolute top-[28px] left-[6%] w-[88%] mx-auto h-[2px] bg-accent-primary timeline-line"></div>
 
               <div className="flex justify-between items-start gap-16">
                 {data.timeline.map((event, index) => (
