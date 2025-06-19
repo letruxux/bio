@@ -1,4 +1,4 @@
-import { SiGithub, SiDiscord, SiLastdotfm } from "@icons-pack/react-simple-icons";
+import { SiGithub, SiDiscord, SiLastdotfm, SiTelegram } from "@icons-pack/react-simple-icons";
 
 export default function SocialLinks({
   ref,
@@ -30,10 +30,10 @@ export default function SocialLinks({
       </a>
       <a
         className="bg-surface-light py-2 rounded-lg hover:bg-accent-primary border border-border-subtle transition text-center hover:-rotate-3"
-        href="https://youtu.be/3lWMdJx-zzI"
+        href="https://t.me/letruxux"
         target="_blank"
       >
-        ❔
+        <SiTelegram className="mx-auto"/>
       </a>
     </div>
   );
