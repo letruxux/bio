@@ -2,6 +2,7 @@ import dayjs from "@/lib/dayjs";
 import { projects } from "./projects";
 import ArchivedBadge from "./badges/archived";
 import WipBadge from "./badges/wip";
+import Card from "./card";
 
 export default function ProjectCard({
   data: project,
@@ -12,13 +13,13 @@ export default function ProjectCard({
 }) {
   return (
     <a href={`/p/${id}`} key={id}>
-      <div
-        className={`project-card rounded-xl border ${
+      <Card
+        className={`p-0 relative rounded-xl border ${
           project.wip
             ? "border-yellow-500/50 hover:border-yellow-500 bg-gradient-to-b from-yellow-500/5 to-blue-bg"
             : project.archived
             ? "border-border-subtle hover:border-accent-primary bg-gradient-to-t from-yellow-500/5 to-blue-bg"
-            : "border-border-subtle hover:border-accent-primary bg-blue-bg"
+            : ""
         } transition-colors overflow-hidden`}
       >
         {project.bannerImage && (
@@ -60,7 +61,7 @@ export default function ProjectCard({
             </div>
           </div>
         </div>
-      </div>
+      </Card>
     </a>
   );
 }

@@ -35,7 +35,7 @@ export default function ProjectsList() {
   }, []);
 
   return (
-    <div className="min-h-dvh bg-black text-text-primary px-4 py-12">
+    <div className="min-h-dvh bg-gradient-to-br from-gray-950 via-black to-gray-900 text-text-primary px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <div ref={headerRef} className="mb-12 text-center">
           <h1 className="text-4xl font-bold mb-4">my projects :3</h1>

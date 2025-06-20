@@ -1,8 +1,10 @@
+import Card from "./card";
+
 export default function GifBox({ ref }: { ref: React.RefObject<HTMLDivElement | null> }) {
   return (
-    <div ref={ref} className="mb-4 w-full">
+    <div ref={ref} className="w-full">
       <h3 className="text-2xl font-bold mb-4 text-text-primary">hello</h3>
-      <div className="bg-surface-light border border-border-subtle p-4 rounded-2xl">
+      <Card className="p-4">
         <img
           src="https://media1.tenor.com/m/cDJj3LEw0UIAAAAd/gmail-dog.gif"
           alt="aaaaaaaaaaaaaaaaaaaaaaaa"
@@ -10,7 +12,7 @@ export default function GifBox({ ref }: { ref: React.RefObject<HTMLDivElement | 
           width={399}
           height={498}
         />
-      </div>
+      </Card>
     </div>
   );
 }

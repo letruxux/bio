@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Phonk";
+  src: url("https://files.catbox.moe/cjpaul.otf") format("opentype");
+  font-display: block;
+}
+
 @layer utilities {
   .delay-2 {
     animation-delay: 0.2s;
@@ -28,4 +34,15 @@ html,
 body {
   height: 100%;
   overflow-y: auto;
+}
+
+.digit-custom {
+  display: inline-block;
+  width: 1ch;
+  transition: all 0.3s ease;
+}
+
+.digit-custom.animating {
+  transform: scale(1.1);
+  color: rgb(255, 87, 84);
 }

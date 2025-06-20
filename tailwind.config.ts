@@ -19,6 +19,9 @@ export default {
         "text-primary": "rgb(240, 240, 245)",
         "text-secondary": "rgb(200, 200, 210)",
         "border-subtle": "rgb(20, 35, 65)",
+
+        "surface-deep": "rgb(5, 8, 20)", // ancora più scuro di surface-dark
+        "surface-glow": "rgb(20, 30, 60)", // per sfumature leggere
       },
       keyframes: {
         waveform: {

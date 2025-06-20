@@ -1,4 +1,9 @@
-import { SiGithub, SiDiscord, SiLastdotfm, SiTelegram } from "@icons-pack/react-simple-icons";
+import {
+  SiGithub,
+  SiDiscord,
+  SiLastdotfm,
+  SiTelegram,
+} from "@icons-pack/react-simple-icons";
 
 export default function SocialLinks({
   ref,
@@ -33,7 +38,7 @@ export default function SocialLinks({
         href="https://t.me/letruxux"
         target="_blank"
       >
-        <SiTelegram className="mx-auto"/>
+        <SiTelegram className="mx-auto" />
       </a>
     </div>
   );

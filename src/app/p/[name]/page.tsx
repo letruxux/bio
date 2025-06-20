@@ -10,6 +10,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ArchivedBadge from "@/components/badges/archived";
 import WipBadge from "@/components/badges/wip";
+import Card from "@/components/card";
 
 function App() {
   const { name: projectName } = useParams<{ name: string }>();
@@ -130,13 +131,13 @@ function App() {
           {data.icon}
         </div>
 
-        <div
-          className={`bg-blue-bg rounded-xl shadow-2xl p-8 pt-20 border ${
+        <Card
+          className={`p-8 pt-20 ${
             data.wip
               ? "border-yellow-500/50 bg-gradient-to-b from-yellow-500/5 to-blue-bg"
               : data.archived
               ? "border-border-subtle bg-gradient-to-b from-orange-500/10 to-blue-bg"
-              : "border-border-subtle"
+              : ""
           } mt-[-64px]`}
         >
           {/* Project Info */}
@@ -224,7 +225,7 @@ function App() {
               </a>
             )}
           </div>
-        </div>
+        </Card>
         <a
           className="flex items-center gap-2 bg-transparent bg-surface-light px-6 py-3 rounded-lg transition-colors border border-transparent hover:border-border-subtle action-button mt-4 w-32 h-12"
           href="/p"

@@ -2,7 +2,7 @@ import CustomEmoji from "./emoji";
 
 export default function Header({ ref }: { ref: React.RefObject<HTMLDivElement | null> }) {
   return (
-    <div ref={ref} className="flex justify-between items-center mb-6">
+    <div ref={ref} className="flex justify-between items-center">
       <div className="flex items-center gap-3">
         <div className="relative scale-100 hover:scale-110 transition-transform duration-200 group">
           <div className="w-12 h-12 bg-surface-light rounded-full overflow-hidden scale-100">
