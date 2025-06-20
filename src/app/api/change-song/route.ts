@@ -1,34 +1,11 @@
 import { NextResponse } from "next/server";
 import { createClient } from "redis";
+import { getAccessToken } from "../spotify";
 
 const redis = createClient({ url: process.env.REDIS_URL });
 await redis.connect();
 
 const REDIS_KEY = "spotify_global_cooldown";
-
-async function getAccessToken() {
-  const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
-  const clientId = process.env.SPOTIFY_CLIENT_ID;
-  const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-
-  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
-
-  const res = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
-    headers: {
-      Authorization: `Basic ${basic}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      grant_type: "refresh_token",
-      refresh_token: refreshToken ?? "",
-    }),
-  });
-
-  if (!res.ok) throw new Error("Failed to refresh token");
-  const data = await res.json();
-  return data.access_token;
-}
 
 export async function POST(req: Request) {
   try {
@@ -64,7 +41,7 @@ export async function POST(req: Request) {
       );
     }
 
-    await redis.set(REDIS_KEY, "1", { EX: 30 }); // cooldown 30 secondi
+    await redis.set(REDIS_KEY, "1", { EX: 300 }); // cooldown 5 minuti
 
     return NextResponse.json({ success: true });
   } catch (err) {
