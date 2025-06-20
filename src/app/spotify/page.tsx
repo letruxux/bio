@@ -30,15 +30,19 @@ export default function Home() {
   // Predictive progress state
   const [predictedProgress, setPredictedProgress] = useState(0);
 
-  const [tabVisible, setTabVisible] = useState(!document.hidden);
+  const [tabVisible, setTabVisible] = useState(
+    typeof document !== "undefined" ? document.hidden : false
+  );
 
   useEffect(() => {
-    const handleVisibility = () => {
-      setTabVisible(!document.hidden);
-    };
+    if (typeof document !== "undefined") {
+      const handleVisibility = () => {
+        setTabVisible(!document.hidden);
+      };
 
-    document.addEventListener("visibilitychange", handleVisibility);
-    return () => document.removeEventListener("visibilitychange", handleVisibility);
+      document.addEventListener("visibilitychange", handleVisibility);
+      return () => document.removeEventListener("visibilitychange", handleVisibility);
+    }
   }, []);
 
   useGSAP(() => {
