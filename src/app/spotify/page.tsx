@@ -2,7 +2,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { Search, Play, Pause, Clock, Music, Volume2 } from "lucide-react";
+import { Search, Play, Pause, Clock, Music, ArrowLeft } from "lucide-react";
 import Card from "@/components/card";
 import { SiSpotify } from "@icons-pack/react-simple-icons";
 import { formatTime } from "../api/spotify";
@@ -376,6 +376,15 @@ export default function Home() {
             </div>
           </Card>
         )}
+
+        <a
+          className="flex items-center gap-2 bg-transparent bg-surface-light  px-6 py-3 rounded-lg transition-colors border border-transparent hover:border-border-subtle action-button mt-4 w-32 h-12"
+          href="/"
+          id="back-button"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back
+        </a>
       </div>
     </div>
   );

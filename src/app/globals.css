@@ -4,8 +4,8 @@
 
 @font-face {
   font-family: "Phonk";
-  src: url("https://files.catbox.moe/cjpaul.otf") format("opentype");
-  font-display: block;
+  src: url("/phonk.otf") format("opentype");
+  font-display: "Arial";
 }
 
 @layer utilities {

@@ -28,7 +28,14 @@ export default {
           "0%, 100%": { transform: "scaleY(1)" },
           "50%": { transform: "scaleY(0.5)" },
         },
+        sway: {
+          "0%, 100%": { transform: "rotate(-2deg)" },
+          "50%": { transform: "rotate(2deg)" },
+        },
       },
+    },
+    animation: {
+      sway: "sway 2s ease-in-out infinite",
     },
   },
   plugins: [ta],

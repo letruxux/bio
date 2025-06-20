@@ -17,7 +17,6 @@ export default function MainCard() {
 
   useGSAP(() => {
     const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-
     timeline
       .to("body", { visibility: "visible", duration: 0 })
       .from(headerRef.current, {

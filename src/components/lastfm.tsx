@@ -7,6 +7,8 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ArrowBigDown } from "lucide-react";
+import { SiSpotify } from "@icons-pack/react-simple-icons";
 
 dayjs.extend(relativeTime);
 
@@ -58,26 +60,42 @@ export default function Lastfm() {
   }
 
   return (
-    <div className="fixed w-full h-dvh pointer-events-none top-0 left-0 z-50">
-      <a
-        className="absolute p-2 right-4 top-4 sm:top-auto sm:bottom-4 flex flex-col items-end text-white pointer-events-auto"
-        href={track.url}
-        ref={lastfmRef}
+    <div
+      className="fixed w-full h-dvh pointer-events-none top-0 left-0 z-50"
+      ref={lastfmRef}
+    >
+      <div
+        className="hidden xl:block absolute bottom-28 right-4 animate-sway sm:bottom-28 sm:right-4 pointer-events-none z-[-1] max-w-[90vw]"
+        style={{ transformOrigin: "70% 80%" }}
       >
-        <h1 className="flex items-center gap-2 font-bold">
-          <PlayIcon now={track.nowPlaying} />{" "}
-          {track.nowPlaying ? "Now playing" : "Last played"}{" "}
-          {!track.nowPlaying && track.playedAt && (
-            <span className="text-gray-400 text-sm font-semibold">
-              {dayjs(track.playedAt).fromNow()}
-            </span>
-          )}
-        </h1>
-        <div className="flex items-center gap-2 scale-100 hover:scale-105 transition-transform duration-500 truncate">
-          <span>🎵 {track.name}</span>
+        <div className="text-white text-xl sm:text-3xl font-bold  text-right sm:text-left max-w-[90vw] ">
+          <SiSpotify className="inline" /> control my spotify
+          <ArrowBigDown
+            className="ml-auto fill-white mt-2 mr-10"
+            style={{ transform: "scaleY(2) scaleX(1.5)" }}
+          />
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-gray-400 truncate">{track.artist}</span>
+      </div>
+      <a
+        className="absolute p-2 right-4 top-4 sm:top-auto sm:bottom-4 text-white pointer-events-auto"
+        href="/spotify"
+      >
+        <div className="flex flex-col items-end hover:scale-105 transition-transform duration-500">
+          <h1 className="flex items-center gap-2 font-bold">
+            <PlayIcon now={track.nowPlaying} />{" "}
+            {track.nowPlaying ? "Now playing" : "Last played"}{" "}
+            {!track.nowPlaying && track.playedAt && (
+              <span className="text-gray-400 text-sm font-semibold">
+                {dayjs(track.playedAt).fromNow()}
+              </span>
+            )}
+          </h1>
+          <div className="flex items-center gap-2 scale-100 truncate">
+            <span>🎵 {track.name}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-gray-400 truncate">{track.artist}</span>
+          </div>
         </div>
       </a>
     </div>
