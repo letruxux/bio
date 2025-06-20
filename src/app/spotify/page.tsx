@@ -5,6 +5,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { Search, Play, Pause, Clock, Music, Volume2 } from "lucide-react";
 import Card from "@/components/card";
 import { SiSpotify } from "@icons-pack/react-simple-icons";
+import { formatTime } from "../api/spotify";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -184,7 +185,7 @@ export default function Home() {
     }
   };
 
-  const formatTime = (ms: number) => {
+  const formatTimeShort = (ms: number) => {
     const seconds = Math.floor(ms / 1000);
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -251,8 +252,8 @@ export default function Home() {
 
                   <div className="mt-3 space-y-2">
                     <div className="flex justify-between text-sm text-purple-400">
-                      <span>{formatTime(predictedProgress)}</span>
-                      <span>{formatTime(currentSong.duration_ms)}</span>
+                      <span>{formatTimeShort(predictedProgress)}</span>
+                      <span>{formatTimeShort(currentSong.duration_ms)}</span>
                     </div>
 
                     <div className="w-full bg-white/20 rounded-full h-2 overflow-hidden">
@@ -366,7 +367,7 @@ export default function Home() {
             <div className="flex items-center gap-3 text-amber-200">
               <Clock className="w-5 h-5 text-amber-400" />
               <span className="font-medium">
-                Cooldown active: {cooldown} seconds remaining
+                Cooldown active: {formatTime(cooldown)} remaining
               </span>
             </div>
           </Card>
