@@ -31,7 +31,7 @@ export default function Home() {
   const [predictedProgress, setPredictedProgress] = useState(0);
 
   const [tabVisible, setTabVisible] = useState(
-    typeof document !== "undefined" ? document.hidden : false
+    typeof document !== "undefined" ? !document.hidden : true
   );
 
   useEffect(() => {
