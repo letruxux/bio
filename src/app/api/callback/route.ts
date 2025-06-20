@@ -3,7 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-  const redirectUri = "https://letruxux.vercel.app/api/callback";
+
+  const redirectUri =
+    process.env.NODE_ENV === "development"
+      ? "http://127.0.0.1:3000"
+      : "https://letruxux.vercel.app" + "/api/callback";
 
   const code = request.nextUrl.searchParams.get("code");
   if (!code) return NextResponse.json({ error: "Missing code" }, { status: 400 });
