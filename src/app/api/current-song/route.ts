@@ -29,6 +29,7 @@ export async function GET() {
         progress_ms: data.progress_ms,
         duration_ms: data.item.duration_ms,
         albumArt: data.item.album.images[0]?.url,
+        uri: data.item.uri,
       },
     });
   } catch (err) {

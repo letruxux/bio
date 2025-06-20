@@ -23,6 +23,7 @@ export default function Home() {
     progress_ms: number;
     duration_ms: number;
     albumArt: string;
+    uri: string;
   }>(null);
 
   // Predictive progress state
@@ -198,7 +199,7 @@ export default function Home() {
     <div className="main-container min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 p-6 flex items-center justify-center">
       <div className="max-w-2xl w-full space-y-6">
         <Card className="text-center font-bold text-green-400 text-2xl backdrop-blur-lg from-surface-light/60 to-surface-deep/60 p-6">
-          control my spotify <SiSpotify className="inline" />
+          control my spotify <SiSpotify className="inline" />{" "}
         </Card>
         {/* Current Song Display */}
         <Card className="backdrop-blur-lg from-surface-light/60 to-surface-deep/60">
@@ -233,8 +234,18 @@ export default function Home() {
                   <Pause className="size-8 absolute right-6 text-white fill-current" />
                 )}
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-xl font-bold text-white truncate">
-                    {currentSong.name}
+                  <h2 className="text-xl font-bold text-white truncate flex items-center">
+                    <span>{currentSong.name}</span>{" "}
+                    <a
+                      href={`https://open.spotify.com/track/${currentSong.uri
+                        ?.split(":")
+                        .pop()}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 size-6 bg-gradient-to-br from-green-400 to-green-600 rounded-lg hover:opacity-50 transition-opacity flex items-center justify-center"
+                    >
+                      <Play className="size-4 mx-auto text-white fill-white" />
+                    </a>
                   </h2>
                   <p className="text-purple-400 truncate">{currentSong.artists}</p>
 
