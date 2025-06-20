@@ -52,6 +52,23 @@ export const projects: { [key: string]: Project } = {
       { label: "INITIAL RELEASE", date: new Date("2025-01-03") },
     ],
   },
+  taps: {
+    bannerImage: "",
+    title: "Taps Website",
+    description: (
+      <span>
+        Join a crew, challenge your friends for step counts, collect new trophies for each
+        goal, and have fun.
+      </span>
+    ),
+    techStack: ["Typescript", "Next.js", "TailwindCSS", "Supabase", "Turnstile"],
+    icon: <span className="text-7xl">🧦</span>,
+    url: "https://taps-app.com",
+    timeline: [
+      { label: "FIRST RELEASE", date: new Date("2025-04-18") },
+      { label: "LAST UPDATE", date: new Date("2025-04-26") },
+    ],
+  },
   "translate-bot-djs": {
     bannerImage: "",
     title: "Translate Bot",

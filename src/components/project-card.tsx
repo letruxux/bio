@@ -31,7 +31,7 @@ export default function ProjectCard({
         {project.wip && <WipBadge />}
         {project.archived && <ArchivedBadge />}
         <div className="p-6">
-          <div className="w-16 h-16 max-w-16 max-h-16 overflow-hidden bg-accent-primary rounded-xl flex items-center justify-center mb-4">
+          <div className="w-16 h-16 max-w-16 max-h-16 overflow-hidden bg-accent-primary rounded-xl flex items-center justify-center mb-4 hover:scale-105 hover:rotate-6 transition-transform">
             <span className="scale-50">{project.icon}</span>
           </div>
           <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
@@ -50,14 +50,9 @@ export default function ProjectCard({
                   </span>
                 ))}
               </div>
-              <div
-                className={`absolute right-0 top-0 h-full w-12 bg-gradient-to-r from-transparent ${
-                  !project.archived ? "to-blue-bg" : ""
-                }`}
-              />
             </div>
             <div className="text-sm text-text-secondary shrink-0">
-              {dayjs(project.timeline.at(1)!.date).fromNow()}
+              {dayjs(project.timeline.at(-1)!.date).fromNow()}
             </div>
           </div>
         </div>
