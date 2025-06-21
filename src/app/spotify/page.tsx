@@ -7,6 +7,8 @@ import Card from "@/components/card";
 import { SiSpotify } from "@icons-pack/react-simple-icons";
 import { formatTime } from "../api/spotify";
 
+const apiBaseUrl = "/api/spotify/";
+
 export default function Home() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<any[]>([]);
@@ -17,6 +19,7 @@ export default function Home() {
   const [lastFetchTime, setLastFetchTime] = useState(Date.now());
   const updateIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [initialLoading, setInitialLoading] = useState(true);
+  const [isChangingSong, setIsChangingSong] = useState(false);
 
   const [currentSong, setCurrentSong] = useState<null | {
     name: string;
@@ -79,7 +82,7 @@ export default function Home() {
   // Fetch current song
   const fetchCurrentSong = useCallback(async () => {
     try {
-      const res = await fetch("/api/current-song");
+      const res = await fetch(apiBaseUrl + "current-song");
       const data = await res.json();
       setLastFetchTime(Date.now());
 
@@ -120,7 +123,7 @@ export default function Home() {
     async function fetchCooldown() {
       if (document.hidden) return;
       try {
-        const res = await fetch("/api/cooldown");
+        const res = await fetch(apiBaseUrl + "cooldown");
         const data = await res.json();
         const newCooldown = data.cooldown && data.cooldown > 0 ? data.cooldown : 0;
         setCooldown(newCooldown);
@@ -157,7 +160,9 @@ export default function Home() {
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/search-song?query=${encodeURIComponent(query)}`);
+      const res = await fetch(
+        apiBaseUrl + `search-song?query=${encodeURIComponent(query)}`
+      );
       const data = await res.json();
       setResults(data.results || []);
     } catch (error) {
@@ -169,8 +174,9 @@ export default function Home() {
   };
 
   const changeSong = async (uri: string) => {
+    setIsChangingSong(true);
     try {
-      const res = await fetch("/api/change-song", {
+      const res = await fetch(apiBaseUrl + "change-song", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ trackUri: uri }),
@@ -186,6 +192,8 @@ export default function Home() {
       }
     } catch (error) {
       console.error("Failed to change song:", error);
+    } finally {
+      setIsChangingSong(false);
     }
   };
 
@@ -202,7 +210,7 @@ export default function Home() {
 
   return (
     <div className="main-container min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 p-6 flex items-center justify-center">
-      <div className="max-w-2xl w-full space-y-6">
+      <div className="max-w-2xl w-full space-y-6 my-4">
         <Card className="text-center font-bold text-green-400 text-2xl backdrop-blur-lg from-surface-light/60 to-surface-deep/60 p-6">
           control my spotify <SiSpotify className="inline" />{" "}
         </Card>
@@ -283,86 +291,91 @@ export default function Home() {
         </Card>
 
         {/* Search Section */}
-        <Card className="backdrop-blur-lg from-surface-light/60 to-surface-deep/60">
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-white flex items-center gap-2">
-              <Search className="w-5 h-5 text-purple-400" />
-              play something else
-            </h3>
+        {currentSong && (
+          <>
+            <Card className="backdrop-blur-lg from-surface-light/60 to-surface-deep/60">
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-white flex items-center gap-2">
+                  <Search className="w-5 h-5 text-purple-400" />
+                  play something else
+                </h3>
 
-            <div className="flex gap-3">
-              <div className="relative flex-1">
-                <input
-                  type="text"
-                  value={query}
-                  placeholder="search for songs..."
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyUp={(e) => e.key === "Enter" && search()}
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
-                />
-              </div>
-
-              <button
-                onClick={search}
-                disabled={loading || !query.trim()}
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:from-gray-500 disabled:to-gray-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 min-w-[100px] justify-center"
-              >
-                {loading ? (
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                ) : (
-                  <>
-                    <Search className="w-4 h-4" />
-                    search
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </Card>
-
-        {/* Search Results */}
-        {results.length > 0 && (
-          <Card className="backdrop-blur-lg from-surface-light/60 to-surface-deep/60 p-6">
-            <h3 className="text-xl font-semibold text-white mb-4">results:</h3>
-
-            <div className="space-y-3 max-h-96 overflow-y-auto">
-              {results.map((track, index) => (
-                <div
-                  key={track.uri}
-                  className="flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 rounded-xl transition-all duration-200 group"
-                >
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-white truncate group-hover:text-purple-200">
-                      {track.name}
-                    </h4>
-                    <p className="text-sm text-purple-300 truncate">{track.artist}</p>
+                <div className="flex gap-3">
+                  <div className="relative flex-1">
+                    <input
+                      type="text"
+                      value={query}
+                      placeholder="search for songs..."
+                      onChange={(e) => setQuery(e.target.value)}
+                      onKeyUp={(e) => e.key === "Enter" && search()}
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                    />
                   </div>
 
                   <button
-                    disabled={cooldown > 0}
-                    onClick={() => changeSong(track.uri)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 min-w-[120px] justify-center ${
-                      cooldown > 0
-                        ? "bg-gray-600 text-gray-300 cursor-not-allowed"
-                        : "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl"
-                    }`}
+                    onClick={search}
+                    disabled={loading || !query.trim()}
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:from-gray-500 disabled:to-gray-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 min-w-[100px] justify-center"
                   >
-                    {cooldown > 0 ? (
-                      <>
-                        <Clock className="w-4 h-4" />
-                        {cooldown}s
-                      </>
+                    {loading ? (
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     ) : (
                       <>
-                        <Play className="w-4 h-4" />
-                        play!
+                        <Search className="w-4 h-4" />
+                        search
                       </>
                     )}
                   </button>
                 </div>
-              ))}
-            </div>
-          </Card>
+              </div>
+            </Card>
+
+            {results.length > 0 && (
+              <Card className="backdrop-blur-lg from-surface-light/60 to-surface-deep/60 p-6">
+                <h3 className="text-xl font-semibold text-white mb-4">results:</h3>
+
+                <div className="space-y-3 max-h-96 overflow-y-auto">
+                  {results.map((track, index) => (
+                    <div
+                      key={track.uri}
+                      className="flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 rounded-xl transition-all duration-200 group"
+                    >
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-white truncate group-hover:text-purple-200">
+                          {track.name}
+                        </h4>
+                        <p className="text-sm text-purple-300 truncate">{track.artist}</p>
+                      </div>
+
+                      <button
+                        disabled={cooldown > 0 || isChangingSong}
+                        onClick={() => changeSong(track.uri)}
+                        className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 min-w-[120px] justify-center ${
+                          cooldown > 0
+                            ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+                            : "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl"
+                        }`}
+                      >
+                        {cooldown > 0 ? (
+                          <>
+                            <Clock className="w-4 h-4" />
+                            {cooldown}s
+                          </>
+                        ) : isChangingSong ? (
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-" />
+                        ) : (
+                          <>
+                            <Play className="w-4 h-4" />
+                            play!
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            )}
+          </>
         )}
 
         {/* Cooldown Indicator */}
@@ -378,7 +391,7 @@ export default function Home() {
         )}
 
         <a
-          className="flex items-center gap-2 bg-transparent bg-surface-light  px-6 py-3 rounded-lg transition-colors border border-transparent hover:border-border-subtle action-button mt-4 w-32 h-12"
+          className="flex items-center gap-2 bg-transparent bg-surface-light text-white px-6 py-3 rounded-lg transition-colors border border-transparent hover:border-border-subtle action-button mt-4 w-32 h-12"
           href="/"
           id="back-button"
         >

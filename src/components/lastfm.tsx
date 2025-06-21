@@ -64,18 +64,20 @@ export default function Lastfm() {
       className="fixed w-full h-dvh pointer-events-none top-0 left-0 z-50"
       ref={lastfmRef}
     >
-      <div
-        className="hidden xl:block absolute bottom-28 right-4 animate-sway sm:bottom-28 sm:right-4 pointer-events-none z-[-1] max-w-[90vw]"
-        style={{ transformOrigin: "70% 80%" }}
-      >
-        <div className="text-white text-xl sm:text-3xl font-bold  text-right sm:text-left max-w-[90vw] ">
-          <SiSpotify className="inline" /> control my spotify
-          <ArrowBigDown
-            className="ml-auto fill-white mt-2 mr-10"
-            style={{ transform: "scaleY(2) scaleX(1.5)" }}
-          />
+      {track.nowPlaying && (
+        <div
+          className="hidden xl:block absolute bottom-28 right-4 animate-sway sm:bottom-28 sm:right-4 pointer-events-none z-[-1] max-w-[90vw]"
+          style={{ transformOrigin: "70% 80%" }}
+        >
+          <div className="text-white text-xl sm:text-3xl font-bold  text-right sm:text-left max-w-[90vw] ">
+            <SiSpotify className="inline" /> control my spotify
+            <ArrowBigDown
+              className="ml-auto fill-white mt-2 mr-10"
+              style={{ transform: "scaleY(2) scaleX(1.5)" }}
+            />
+          </div>
         </div>
-      </div>
+      )}
       <a
         className="absolute p-2 right-4 top-4 sm:top-auto sm:bottom-4 text-white pointer-events-auto"
         href="/spotify"

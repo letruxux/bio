@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "redis";
-import { getAccessToken } from "../spotify";
+import { getAccessToken } from "../../spotify";
 
 const redis = createClient({ url: process.env.REDIS_URL });
 await redis.connect();

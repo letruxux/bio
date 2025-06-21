@@ -32,10 +32,15 @@ export default {
           "0%, 100%": { transform: "rotate(-2deg)" },
           "50%": { transform: "rotate(2deg)" },
         },
+        spin: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
     },
     animation: {
       sway: "sway 2s ease-in-out infinite",
+      spin: "spin 1s linear infinite",
     },
   },
   plugins: [ta],
