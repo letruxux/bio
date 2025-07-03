@@ -63,7 +63,7 @@ export default function MainCard() {
   }, []);
 
   return (
-    <div className="p-6 rounded-lg text-text-primary max-w-[1024px] space-y-4">
+    <div className="p-4 md:p-2 rounded-lg text-text-primary max-w-[1024px] space-y-4">
       {/* Header */}
       <Header ref={headerRef} />
 
