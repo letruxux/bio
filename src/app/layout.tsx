@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body
-        className={`${font.className} antialiased fixed top-0 left-0 w-screen min-h-screen`}
+        className={`${font.className} antialiased min-h-screen`}
       >
         {children}
         <Analytics />
