@@ -64,7 +64,7 @@ function TimezoneClock({ ref }: { ref: React.RefObject<HTMLDivElement | null> })
 
   if (!isLoaded) {
     return (
-      <Card ref={ref} className="w-full max-w-md text-center space-y-4">
+      <Card ref={ref} className="w-full text-center space-y-4">
         <div className="text-white text-sm opacity-50">
           Calculating timezone difference...
         </div>
@@ -74,7 +74,7 @@ function TimezoneClock({ ref }: { ref: React.RefObject<HTMLDivElement | null> })
 
   if (isAhead === null) {
     return (
-      <Card ref={ref} className="w-full max-w-md text-center space-y-4">
+      <Card ref={ref} className="w-full text-center space-y-4">
         <div className="text-2xl text-green-400">
           <span style={{ fontFamily: "Phonk" }}>same timezone</span>
           <span className="font-black text-3xl">!</span>

@@ -63,17 +63,13 @@ export default function MainCard() {
   }, []);
 
   return (
-    <div className="p-4 md:p-2 rounded-lg text-text-primary max-w-[1024px] space-y-4">
-      {/* Header */}
+    <div className="p-2 lg:p-4 rounded-lg text-text-primary max-w-[512px] space-y-4 w-full">
       <Header ref={headerRef} />
 
-      {/* Gif Box */}
       <GifBox ref={messageRef} />
 
-      {/* My projects */}
       <ProjectsButton ref={projectsRef} />
 
-      {/* Social Links */}
       <SocialLinks ref={socialRef} />
 
       <TimezoneClock ref={timezoneRef} />
